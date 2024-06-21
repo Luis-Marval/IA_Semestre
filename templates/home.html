@@ -1,0 +1,27 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static "css/home.css" %}">
+    <link rel="stylesheet" href=>
+    <title>Salvacion AI</title>
+</head>
+<body>
+
+    <div class="parent">
+        <div class="desc">
+            <h1 class="text">Salva Semestres 5000</h1>
+            <p>Este programa para hacerse en una semana corre mejor que lo que se hizo en el semestre xD. Es decir, valimos Verga</p>
+            <br>
+            <a href="{% url "login" %}">Iniciar</a>
+        </div>
+        <div>
+            <img src="{% static "css/robot.png" %}" alt="" class="bot-img">
+        </div>
+    </div>
+    
+
+</body>
+</html>

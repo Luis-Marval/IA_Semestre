@@ -1,0 +1,142 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static "css/style.css" %}">
+    
+
+    <title>Salvacion AI</title>
+</head>
+<body>
+
+<div class="ms-3 text-sm font-bold text-green-800">
+        
+    <div id="main">
+
+        <div class="tittle">
+            <h2>Salva Semestres 5000.ia</h2>
+            <a href="{% url "logout" %}" class="logout">Cerrar Sesión</a>
+        </div>
+
+        <div id="msg">
+            <div id="robot">
+                <div class="bot"></div>
+                <h3>Salvacion</h3>
+            </div>
+            <div id="msgContent"></div>
+        </div>
+
+        <div id="inputContent">
+            <div class="input">
+                <input type="text" id="msg_send" name="input" placeholder="Escribe Tu Pregunta"> <button class="send" id="btn">Enviar <i class="fas fa-paper-plane"></i></button>
+            </div>
+        </div>
+    </div>
+</div>
+    <script>
+        let chatHistory = {"role":"assistant","content":"Hola {{ user }}. ¿Como puedo ayudarte hoy?"};      
+        chat(chatHistory)
+
+        const btn = document.getElementById("btn")
+        btn.addEventListener('click', () =>{
+            const csrfToken = getCookie('csrftoken');
+            const content = document.getElementById("msg_send").value
+            const json = { "role":"user","content": content }
+            chat(json)
+            fetch('answer/',{
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json','X-CSRFToken': csrfToken
+                },
+                body: JSON.stringify(json),
+            })
+            .then((res) => res.json())
+            .catch((error) => console.error("Error:", error))
+            .then((response) => {
+                console.log("Success:", response)
+                chat(response)
+            });
+        })
+        
+        
+        function getCookie(name) {
+            const value = `; ${document.cookie}`;
+            const parts = value.split(`; ${name}=`);
+            if (parts.length === 2) return parts.pop().split(';').shift();
+        }
+        
+        
+        
+        function chat(objeto){
+            let div;
+            div = document.createElement("div");
+            div.innerHTML = objeto.content;
+            div.setAttribute("class",objeto.role);
+            document.getElementById('msgContent').appendChild(div);
+        }
+
+    </script>
+        
+    <style>
+        body{
+            display:block;
+            width:100vw;
+            height:100vw;
+        }
+        header{
+            width: 100%;
+            height: 90px;
+            background-color: #0b132b;
+        }
+        .interior{
+            max-width: 100%;
+            padding: 0 10px;
+            margin: auto;
+        }
+        .logo{
+            float: left;
+            padding: 5px 20px 0;
+        }
+        .logo img{
+            height: 80px;
+        }
+        .logo img:hover{
+            transform: scale(1.1);
+        }
+        .logout{
+            color: #ffffff;
+            text-align: center;
+            text-transform: uppercase;
+            font-size: 14px;
+            font-weight: bold;
+            transition: .3s linear;
+            line-height:14px;
+            margin: 6px;
+        }
+        .logout:hover{
+            color: #00c9bd;
+            transform: scale(1.1);
+        }
+        .navegacion ul li:hover .hijos{
+            display: block;
+        }
+        .navegacion .submenu .hijos{
+            display: none;
+            background: #0b132b;
+            position: absolute;
+            width: 100%;
+        }
+        .navegacion .submenu .hijos li{
+            display: block;
+            overflow: hidden;
+            border-bottom: none;
+        }
+        .navegacion .submenu .hijos li a{
+            display: block;
+        }
+    </style>
+    
+</body>
+</html>

@@ -1,0 +1,28 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static "css/login.css" %}">
+    <title>Salvacion AI</title>
+</head>
+<body>
+
+    <div class="container">
+        <form action="{% url 'login' %}" method="POST" class="form">
+            <p class="title">Iniciar Sesión</p>
+            <p class="message">Inicia Sesión para acceder al Sistema</p>
+                {% csrf_token %}
+
+                {{ form }}
+                    
+            
+
+            <button class="submit" type="submit">Iniciar Sesion</button>
+            <p class="signin">¿Aún no posee una cuenta? <a href="{% url "register" %}">Registrarse</a></p>
+        </form>
+        </div>
+
+</body>
+</html>

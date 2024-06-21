@@ -1,0 +1,47 @@
+{
+  "intents":[
+    {
+        "tag" : "Saludo",
+        "pattern" : ["Hola","Buenos Dias","Buenas Tardes"],
+        "responses" : ["Hola, Como estas hoy","Buenas, Que necesitas"]
+    },
+    {
+        "tag" : "Comida Leon",
+        "pattern" : ["Cual es la comida preferira del leon","Que come un leon"," El leon come carne?","Soy comida de leon"],
+        "responses" : ["Un leon se a limentan de carne principalmente animales de mediano y gran tamaño como ñúes, impalas y otros antílopes, cebras, jirafas, búfalos y también carroña.","La alimentación de los leones se basa en la carne que obtiene de los animales que caza, principalmente herbívoros como los ñus, las cebras (tanto la cebra grevy como la común), los impalas, las gacelas o los antílopes, por ejemplo."]
+    },
+    {
+        "tag":"Despedida",
+        "pattern":["Adios"," hasta nunca"," Nos vemos"],
+        "responses":["Adios, esperamos a verte pronto", "Hasta luego, Gracias por visitarnos","Nos vemos, vuelve Pronto"]
+    },
+    {
+      "tag": "finalizar",
+      "pattern": ["cerrar conversación", "terminar", "fin"],
+      "responses": ["¡Entendido! Siempre estoy disponible si necesitas más ayuda.", "¡Hasta la próxima!"]
+    },
+    {
+      "tag": "despedida",
+      "pattern": ["adiós", "hasta luego", "nos vemos"],
+      "responses": ["¡Hasta pronto!", "Que tengas un buen día."]
+    },
+    {
+      "tag": "agradecimiento",
+      "pattern": ["gracias", "muchas gracias", "te lo agradezco"],
+      "responses": ["¡De nada! Estoy aquí para ayudarte.", "¡Con gusto! Si necesitas algo más, no dudes en preguntar."]
+    },{
+      "tag": "finalizar",
+      "pattern": ["cerrar conversación", "terminar", "fin"],
+      "responses": ["¡Entendido! Siempre estoy disponible si necesitas más ayuda.", "¡Hasta la próxima!"]
+    },{
+      "tag": "cumplido",
+      "pattern": ["¡Eres increíble!", "¡Lo hiciste genial!", "¡Impresionante trabajo!"],
+      "responses": [
+          "¡Gracias! Estoy aquí para ayudar.",
+          "¡Tú también eres increíble!",
+          "¡Me alegra que lo pienses así!",
+          "¡Gracias por tus amables palabras!"
+      ]
+    }
+  ]
+}
